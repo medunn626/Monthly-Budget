@@ -1,0 +1,21 @@
+<div>
+  <h3>Sign In</h3>
+  <input [(ngModel)]="email" type="text" placeholder="Email"/>
+  <input [(ngModel)]="password" type="text" placeholder="Email"/>
+  <input (click)="signIn()" type="submit" value="Search"/>
+</div>
+
+<div>
+  <h3>Change Password</h3>
+  <input [(ngModel)]="newPassword" type="text" placeholder="New"/>
+  <input [(ngModel)]="oldPassword" type="text" placeholder="Old"/>
+  <input (click)="changePassword()" type="submit" value="Search"/>
+
+</div>
+
+<div>
+  <h3>Log Out</h3>
+  <input (click)="signOut()" type="submit" value="Sign Out"/>
+</div>
+
+<div *ngIf="auth.user">I see a user!!!</div>
