@@ -25,3 +25,13 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Auth service
+Created the Auth Service to interact with the GA provided template. Auth actions retrieve the api from environment.
+
+1. Add service to handle Authentication requests
+  1. signIn- Takes email: string and password: string from the calling component. Creates the hash for credentials to use in the sign-in action. Subscribes to response to save the user as this.user(auth.user)
+  2. signUp- Takes email: string, password: string and password_confirmation: string from component.
+  3. signOut- Takes no arguments. Uses the existing token and processes delete action.
+  4. changePassword- Takes oldPassword: string and newPassword: string from component. Takes token from authenticated user and sends patch request to server. Subscribe console logs

@@ -36,8 +36,22 @@ export class AuthService {
         err => console.log(err)
       )
   }
-  signUp(email: string, password: string) {
-
+  signUp(email: string, password: string, password_confirmation: string) {
+    const url = environment.apiServer + '/sign-up/'
+    const credentials = {
+      'credentials': {
+        'email': email,
+        'password': password,
+        'password_confirmation': password_confirmation
+      }
+    }
+    this.http.post(environment.apiServer + '/sign-up', credentials)
+      .subscribe(
+        response => {
+          this.signIn(credentials.credentials.email, credentials.credentials.password)
+        },
+        err => console.log(err)
+      )
   }
 
   signOut() {
