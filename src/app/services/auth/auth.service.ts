@@ -18,11 +18,8 @@ export class AuthService {
     return this.user.token
   }
 
-  setUser(data) {
-    this.user = data
-  }
-
   signIn(email: string, password: string) {
+    // Create the credentials object.
     let credentials = {
       'credentials': {
         'email': email,
@@ -30,14 +27,17 @@ export class AuthService {
       }
     }
 
+    // Make the post request. environment.apiServer contains the local server address http://localhost:4741
     this.http.post(environment.apiServer + '/sign-in', credentials)
       .subscribe(
+        // Save the response to user
         response => this.user = JSON.parse(response['_body']).user,
         err => console.log(err)
       )
   }
+
   signUp(email: string, password: string, password_confirmation: string) {
-    const url = environment.apiServer + '/sign-up/'
+    // Create the credentials object.
     const credentials = {
       'credentials': {
         'email': email,
@@ -45,9 +45,12 @@ export class AuthService {
         'password_confirmation': password_confirmation
       }
     }
+
+    // Make the post request. environment.apiServer contains the local server address http://localhost:4741
     this.http.post(environment.apiServer + '/sign-up', credentials)
       .subscribe(
         response => {
+          // Send the existing credentials back to the server to log in the new user
           this.signIn(credentials.credentials.email, credentials.credentials.password)
         },
         err => console.log(err)
@@ -55,19 +58,22 @@ export class AuthService {
   }
 
   signOut() {
-    let url = environment.apiServer + '/sign-out/' + this.user.id
+    // Create the configuration object to be able to store the Headers > Authentication
     let config = {}
 
+    // Set the headers key
     config['headers'] = { Authorization:'Token token=' + this.getUserToken()}
-    this.http.delete(url, config)
+    // Make the delete request to URL, and add the token from Config.
+    this.http.delete(environment.apiServer + '/sign-out/' + this.user.id, config)
       .subscribe(
+        // Remove the logged in user.
         data => this.user = null,
         err => console.log(err)
       )
   }
+
   changePassword(oldPassword: string, newPassword: string) {
-    let url = environment.apiServer + '/change-password/' + this.user.id
-    let config = {}
+    // Create the passwords data object to send.
     let passwords = {
       'passwords': {
         'old': oldPassword,
@@ -75,8 +81,14 @@ export class AuthService {
       }
     }
 
+    // Create the configuration object to be able to store the Headers > Authentication
+    let config = {}
+
+    // Set the headers key
     config['headers'] = { Authorization:'Token token=' + this.getUserToken()}
-    this.http.patch(url, passwords, config)
+
+    // Make the patch request to URL, add the password data and token from Config.
+    this.http.patch(environment.apiServer + '/change-password/' + this.user.id, passwords, config)
       .subscribe(
         data => console.log('Success'),
         err => console.log(err)
