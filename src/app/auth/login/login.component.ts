@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   user = <any>{};
+  newUser = <any>{};
 
   constructor(
     public auth: AuthService,
@@ -18,11 +19,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem('token')) {
-      this.router.navigate(['main'])
+      this.router.navigate(['home'])
     }
   }
 
   login() {
     this.auth.login(this.user.email, this.user.password)
+  }
+
+  signUp() {
+    this.auth.signUp(this.newUser.email, this.newUser.password, this.newUser.password_confirmation)
   }
 }

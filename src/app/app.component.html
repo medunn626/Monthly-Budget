@@ -12,6 +12,7 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-left">
+        <!-- <li><a><input class="btn-success" routerLink="/" type="submit" value="Sign In/Register"></a></li> -->
         <li><a class="nav-link" routerLink="/places">Home</a></li>
         <li><a class="nav-link" routerLink="/auth/change-password">Change Password</a></li>
         <li><a><input class="btn-warning" (click)="signOut()" type="submit" value="Log Out"/></a></li>
@@ -19,11 +20,9 @@
     </div>
   </div>
 </nav>
+<div style="text-align:center">
+  <h3>Welcome to your budgeting app Amaounda! Please register or sign in and get to saving!</h3>
+</div>
 <main>
   <router-outlet></router-outlet>
 </main>
-<div style="text-align:center">
-  <h1>
-    {{title}}!
-  </h1>
-</div>
