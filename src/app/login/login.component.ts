@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   // Not bound to multiple inputs, no object needed
   oldPassword: string
   newPassword: string
-  constructor(private auth: AuthService) { }
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
   }
