@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 
 export class AuthService {
 
+  loggedIn: boolean = false;
   loginFailure: boolean;
   signUpFailure: boolean;
   signOutFailure: boolean;
@@ -35,6 +36,7 @@ export class AuthService {
       const user = JSON.parse(response['_body']).user
       localStorage.setItem('token', user.token)
       localStorage.setItem('id', user.id)
+      this.loggedIn = true
       this.loginFailure = false
       this.signUpFailure = false
       this.router.navigate(['/home/'])
@@ -90,6 +92,7 @@ signOut() {
     data => {
       localStorage.clear()
       this.signOutFailure = false
+      this.loggedIn = false
       this.router.navigate(['/'])
     },
     err => {

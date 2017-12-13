@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthComponent } from './auth.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+
+import { HomeComponent } from '../home/home.component';
 
 const authRoutes: Routes = [
   {
@@ -17,6 +18,10 @@ const authRoutes: Routes = [
         component: ChangePasswordComponent
       }
     ]
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: '',

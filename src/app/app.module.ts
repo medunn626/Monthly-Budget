@@ -13,11 +13,13 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthModule } from './auth/auth.module'
 import { AuthRoutingModule } from './auth/auth-routing.module'
 import { AuthService } from './auth/auth.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
