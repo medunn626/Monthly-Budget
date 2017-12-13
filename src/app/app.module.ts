@@ -2,22 +2,32 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ModalModule } from 'ngx-modal';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { AuthService } from './services/auth/auth.service';
-import { NavbarComponent } from './navbar/navbar.component'
+import { AppRoutingModule } from './app-routing.module';
+
+import { AuthComponent } from './auth/auth.component';
+import { AuthModule } from './auth/auth.module'
+import { AuthRoutingModule } from './auth/auth-routing.module'
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    NavbarComponent
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRoutingModule,
+    AuthModule,
+    AuthRoutingModule,
+    ModalModule,
+    FilterPipeModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
