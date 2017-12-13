@@ -17,7 +17,7 @@ export class AuthService {
 
   constructor(
     private http: Http,
-    private router: Router
+    public router: Router
   ) { }
 
   login(email: string, password: string) {
@@ -37,7 +37,7 @@ export class AuthService {
       localStorage.setItem('id', user.id)
       this.loginFailure = false
       this.signUpFailure = false
-      this.router.navigate(['/main/'])
+      this.router.navigate(['/home/'])
     },
     err => {
       this.loginFailure = true
