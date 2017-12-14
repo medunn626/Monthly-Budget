@@ -31,9 +31,9 @@
               <th>Delete</th>
             </tr>
             <tr *ngFor="let expense of allExpenses">
-              <td>{{expense.description}}</td>
-              <td>{{expense.payment_date}}</td>
-              <td>${{expense.amount}}</td>
+              <td [ngClass]="{'done': expense.paid }">{{expense.description}}</td>
+              <td [ngClass]="{'done': expense.paid }">{{expense.payment_date}}</td>
+              <td [ngClass]="{'done': expense.paid }">${{expense.amount}}</td>
               <td><a routerLink="/expenses/edit/{{expense.id}}"><span class="glyphicon glyphicon-edit"></span></a></td>
               <td><a (click)="deleteExpense(expense)"><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>

@@ -32,6 +32,12 @@ td {
   text-align: center;
 }
 
+.done {
+  opacity: 0.6;
+  font-style: italic;
+
+}
+
 #back {
   text-align: left;
 }
