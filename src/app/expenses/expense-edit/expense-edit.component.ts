@@ -21,6 +21,7 @@ export class ExpenseEditComponent implements OnInit {
     const descriptionField = <HTMLInputElement>document.getElementById('update-description')
     const amountField = <HTMLInputElement>document.getElementById('update-amount')
     const paymentField = <HTMLInputElement>document.getElementById('update-payment')
+    const recurringField = <HTMLInputElement>document.getElementById('update-recurring')
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/'])
     } else {
@@ -28,9 +29,10 @@ export class ExpenseEditComponent implements OnInit {
         this.expensesService.getOneExpense(param.id)
         .subscribe(response => {
           this.updatedExpense = response.json();
-          descriptionField.value = this.updatedExpense.expense.description
-          amountField.value = this.updatedExpense.expense.amount
-          paymentField.value = this.updatedExpense.expense.payment_date
+          descriptionField.value = this.updatedExpense.expense.description;
+          amountField.value = this.updatedExpense.expense.amount;
+          paymentField.value = this.updatedExpense.expense.payment_date;
+          recurringField.checked = this.updatedExpense.expense.recurring;
         });
       });
     }
@@ -54,6 +56,7 @@ export class ExpenseEditComponent implements OnInit {
       response => {
         let data = response.json();
         this.router.navigate(["/expenses"]);
+        console.log('Update result is', data)
     },
     err => {
       this.expensesService.updateExpenseFailure = true

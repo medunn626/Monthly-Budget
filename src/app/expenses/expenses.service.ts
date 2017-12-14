@@ -37,10 +37,12 @@ export class ExpensesService {
         "description": newExpense.description,
         "amount": newExpense.amount,
         "payment_date": newExpense.payment_date,
+        "recurring": newExpense.recurring,
         "paid": this.isPaid,
         "user_id": localStorage.getItem('id')
       }
     }
+    console.log('Params are', expenseCreateParams)
     return this.http.post(environment.apiServer + '/expenses', expenseCreateParams, config);
   }
 
@@ -52,10 +54,12 @@ export class ExpensesService {
         "description": updatedExpense.description,
         "amount": updatedExpense.amount,
         "payment_date": updatedExpense.payment_date,
+        "recurring": updatedExpense.recurring,
         "paid": this.isPaid,
         "user_id": localStorage.getItem('id')
       }
     }
+    console.log('Params are', expenseUpdateParams)
     return this.http.put(environment.apiServer + '/expenses/' + updatedExpense.expense.id, expenseUpdateParams, config);
   }
 

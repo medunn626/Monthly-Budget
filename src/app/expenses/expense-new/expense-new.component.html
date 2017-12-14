@@ -18,6 +18,10 @@
           <input name="amount" [(ngModel)]="newExpense.amount" id="new-amount" size="10" maxlength="5" placeholder="e.g. 100" (keypress)="_keyPress($event)" required/><br>
           <label for="payment_date">Payment Date:</label>
           <input type="number" min="1" max="31" name="payment_date" [(ngModel)]="newExpense.payment_date" id="new-payment" maxlength="2" placeholder="DD" required/><br>
+          <p class="recurring">
+            <input type="checkbox" name="recurring" id="new-recurring" [(ngModel)]="newExpense.recurring" />
+            <label for="recurring">Recurring monthly expense</label>
+          </p>
           <p class="submit button">
             <input type="submit" value="Add"/>
           </p>

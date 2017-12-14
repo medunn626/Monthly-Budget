@@ -17,7 +17,11 @@
           <label for="amount">Amount: $</label>
           <input name="amount" [(ngModel)]="updatedExpense.amount" ng-keydown="isNumberKey" id="update-amount" size="10" maxlength="5" (keypress)="_keyPress($event)" required/><br>
           <label for="payment_date">Payment Date:</label>
-          <input type="number" min="1" max="31" name="payment_date" [(ngModel)]="newExpense.payment_date" id="new-payment" maxlength="2" required/><br>
+          <input type="number" min="1" max="31" name="payment_date" [(ngModel)]="updatedExpense.payment_date" id="update-payment" maxlength="2" required/><br>
+          <p class="recurring">
+            <input type="checkbox" name="recurring" id="update-recurring" [(ngModel)]="updatedExpense.recurring" />
+            <label for="recurring">Recurring monthly expense</label>
+          </p>
           <p class="submit button">
             <input type="submit" value="Edit"/>
           </p>

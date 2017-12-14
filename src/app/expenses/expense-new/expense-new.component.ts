@@ -38,17 +38,20 @@ export class ExpenseNewComponent implements OnInit {
   const newDescription = <HTMLInputElement>document.getElementById('new-description')
   const newAmount = <HTMLInputElement>document.getElementById('new-amount')
   const newPayment = <HTMLInputElement>document.getElementById('new-paymnt')
+  const newRecurring = <HTMLInputElement>document.getElementById('new-recurring')
   this.expensesService.saveExpense(newExpense)
   .subscribe(
     response => {
       let data = response.json();
       this.router.navigate(["/expenses"]);
+      console.log('Result is', data)
     },
     err => {
       this.expensesService.createExpenseFailure = true
       newDescription.value = ''
       newAmount.value = ''
       newPayment.value = ''
+      newRecurring.checked = false
     }
   )
 }
