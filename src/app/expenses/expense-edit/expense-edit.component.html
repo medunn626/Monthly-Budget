@@ -1,3 +1,27 @@
-<p>
-  expenses-edit works!
-</p>
+<div id="container">
+  <!-- Create Expense Box -->
+  <div id="wrapper">
+    <!-- Create Expense Form -->
+    <div id="edit-expense">
+      <div id="back">
+        <a (click)="removeMessage()" routerLink="/expenses" class="back">Go Back</a>
+        <br>
+      </div>
+        <form (ngSubmit)="updateExpense(updatedExpense)" ngNativeValidate>
+          <div *ngIf="expensesService.updateExpenseFailure" class="failure">
+            <h5>Sorry, this expense could not be edited.</h5>
+          </div>
+          <h1>Edit Expense</h1>
+          <label for="description">Expense Description:</label>
+          <input name="description" [(ngModel)]="updatedExpense.description" id="update-description" size="40" required/><br>
+          <label for="amount">Amount: $</label>
+          <input name="amount" [(ngModel)]="updatedExpense.amount" ng-keydown="isNumberKey" id="update-amount" size="10" maxlength="5" required/><br>
+          <label for="payment_date">Payment Date:</label>
+          <input name="payment_date" ng-keydown="isNumberKey" [(ngModel)]="updatedExpense.payment_date" id="update-payment" size="20" maxlength="5" required/><br>
+          <p class="submit button">
+            <input type="submit" value="Update"/>
+          </p>
+        </form>
+      </div><!--/ create-expense-->
+    </div><!--/ wrapper-->
+  </div><!--/ container-->

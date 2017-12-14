@@ -5,7 +5,6 @@ import { ExpensesComponent } from './expenses.component';
 import { ExpenseIndexComponent } from './expense-index/expense-index.component';
 import { ExpenseNewComponent } from './expense-new/expense-new.component';
 import { ExpenseEditComponent } from './expense-edit/expense-edit.component';
-import { ExpenseShowComponent } from './expense-show/expense-show.component';
 
 const expenseRoutes: Routes = [
   {
@@ -23,10 +22,6 @@ const expenseRoutes: Routes = [
       {
         path: 'edit/:id',
         component: ExpenseEditComponent
-      },
-      {
-        path: ':id',
-        component: ExpenseShowComponent
       }
     ]
   }

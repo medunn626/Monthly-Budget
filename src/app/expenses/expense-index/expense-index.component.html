@@ -1,3 +1,49 @@
-<p>
-  expenses-index works!
-</p>
+<div id="container">
+  <!-- See Expenses Box -->
+  <div id="wrapper">
+    <!-- See Expenses Form -->
+    <div id="see-expenses">
+      <div id="back">
+        <a (click)="removeMessage()" routerLink="/home" class="back">Go Back</a>
+        <br>
+      </div>
+      <form>
+        <div *ngIf="expensesService.deleteExpenseSuccess" class="success">
+          <h5>The expense has successfully been deleted.</h5>
+        </div>
+        <div *ngIf="expensesService.deleteExpenseFailure" class="failure">
+          <h5>Sorry, this expense could not be deleted.</h5>
+        </div>
+        <h1>Expenses</h1>
+        <div *ngIf="allExpenses.length === 0">
+          <h4>You have no expenses yet. Either you're very lucky or you should add some.</h4>
+        </div>
+        <div *ngIf="allExpenses.length > 0">
+          <h4>You have {{allExpenses.length}} expense(s) this month.</h4>
+        </div>
+        <div class="expenses">
+          <table *ngIf="allExpenses.length > 0">
+            <tr>
+              <th>Description</th>
+              <th>Payment Date</th>
+              <th>Amount</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+            <tr *ngFor="let expense of allExpenses">
+              <td>{{expense.description}}</td>
+              <td>{{expense.payment_date}}</td>
+              <td>${{expense.amount}}</td>
+              <td><a routerLink="/expenses/edit/{{expense.id}}"><span class="glyphicon glyphicon-edit"></span></a></td>
+              <td><a (click)="deleteExpense(expense)"><span class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+          </table>
+          <br>
+          <div id="new">
+            <button routerLink="/expenses/new" class="btn btn-primary">Add An Expense</button>
+          </div><!--/ new-->
+        </div><!--/ expenses-->
+      </form>
+    </div><!--/ see-expenses-->
+  </div><!--/ wrapper-->
+</div><!--/ container-->

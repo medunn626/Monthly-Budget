@@ -52,7 +52,7 @@ export class ExpensesService {
         "description": updatedExpense.description,
         "amount": updatedExpense.amount,
         "payment_date": updatedExpense.payment_date,
-        "paid": updatedExpense.paid,
+        "paid": this.isPaid,
         "user_id": localStorage.getItem('id')
       }
     }

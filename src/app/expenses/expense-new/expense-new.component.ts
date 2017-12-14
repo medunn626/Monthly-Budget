@@ -44,7 +44,7 @@ export class ExpenseNewComponent implements OnInit {
   .subscribe(
     response => {
       let data = response.json();
-      this.router.navigate(["/expenses/" + data.expense.id]);
+      this.router.navigate(["/expenses"]);
     },
     err => {
       this.expensesService.createExpenseFailure = true

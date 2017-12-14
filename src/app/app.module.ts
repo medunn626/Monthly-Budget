@@ -13,12 +13,13 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthModule } from './auth/auth.module'
 import { AuthRoutingModule } from './auth/auth-routing.module'
 import { AuthService } from './auth/auth.service';
+
 import { HomeComponent } from './home/home.component';
+
 import { ExpensesComponent } from './expenses/expenses.component';
-import { ExpensesIndexComponent } from './expenses-index/expenses-index.component';
+import { ExpenseIndexComponent } from './expenses/expense-index/expense-index.component';
 import { ExpenseNewComponent } from './expenses/expense-new/expense-new.component';
-import { ExpensesShowComponent } from './expenses/expenses-show/expenses-show.component';
-import { ExpensesEditComponent } from './expenses/expenses-edit/expenses-edit.component';
+import { ExpenseEditComponent } from './expenses/expense-edit/expense-edit.component';
 import { ExpensesService } from './expenses/expenses.service'
 
 @NgModule({
@@ -27,10 +28,9 @@ import { ExpensesService } from './expenses/expenses.service'
     AuthComponent,
     HomeComponent,
     ExpensesComponent,
-    ExpensesIndexComponent,
+    ExpenseIndexComponent,
     ExpenseNewComponent,
-    ExpensesShowComponent,
-    ExpensesEditComponent
+    ExpenseEditComponent
   ],
   imports: [
     BrowserModule,
