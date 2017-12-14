@@ -34,6 +34,7 @@ export class AuthService {
   .subscribe(
     response => {
       const user = JSON.parse(response['_body']).user
+      console.log('User is', user)
       localStorage.setItem('token', user.token)
       localStorage.setItem('id', user.id)
       this.loggedIn = true
