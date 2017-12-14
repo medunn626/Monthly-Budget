@@ -12,10 +12,10 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-left">
-        <li><a class="nav-link" routerLink="/home">Home</a></li>
-        <li><a class="nav-link">My Budget</a></li>
-        <li><a class="nav-link" routerLink="/expenses">My Expenses</a></li>
-        <li><a class="nav-link" routerLink="/auth/change-password">Change Password</a></li>
+        <li data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><a class="nav-link" routerLink="/home">Home</a></li>
+        <li data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><a class="nav-link">My Budget</a></li>
+        <li data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><a class="nav-link" routerLink="/expenses">My Expenses</a></li>
+        <li data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><a class="nav-link" routerLink="/auth/change-password">Change Password</a></li>
         <li><a><input class="btn-warning" (click)="signOut()" type="submit" value="Log Out"/></a></li>
       </ul>
     </div>
