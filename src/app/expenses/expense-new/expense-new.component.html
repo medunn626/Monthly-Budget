@@ -1,0 +1,27 @@
+<div id="container">
+  <!-- Create Expense Box -->
+  <div id="wrapper">
+    <!-- Create Expense Form -->
+    <div id="add-expense">
+      <div id="back">
+        <a (click)="removeMessage()" routerLink="/expenses" class="back">Go Back</a>
+        <br>
+      </div>
+        <form (ngSubmit)="saveExpense(newExpense)" ngNativeValidate>
+          <div *ngIf="expensesService.createExpenseFailure" class="failure">
+            <h5>Sorry, this expense could not be added.</h5>
+          </div>
+          <h1>Add Your Expense</h1>
+          <label for="description">Expense Description:</label>
+          <input name="description" [(ngModel)]="newExpense.description" id="new-description" placeholder="e.g. 'groceries, Hulu, etc." required/><br>
+          <label for="amount">Amount: $</label>
+          <input name="amount" [(ngModel)]="newExpense.amount" ng-keydown="isNumberKey" id="new-amount" size="5" maxlength="5" placeholder="e.g. 100" required/><br>
+          <label for="payment_date">Payment Date:</label>
+          <input name="payment_date" ng-keydown="isNumberKey" [(ngModel)]="newExpense.payment_date" id="new-payment" size="5" maxlength="5" placeholder="i.e. 10, if on the 10th" required/><br>
+          <p class="submit button">
+            <input type="submit" value="Add"/>
+          </p>
+        </form>
+      </div><!--/ create-expense-->
+    </div><!--/ wrapper-->
+  </div><!--/ container-->

@@ -14,12 +14,23 @@ import { AuthModule } from './auth/auth.module'
 import { AuthRoutingModule } from './auth/auth-routing.module'
 import { AuthService } from './auth/auth.service';
 import { HomeComponent } from './home/home.component';
+import { ExpensesComponent } from './expenses/expenses.component';
+import { ExpensesIndexComponent } from './expenses-index/expenses-index.component';
+import { ExpenseNewComponent } from './expenses/expense-new/expense-new.component';
+import { ExpensesShowComponent } from './expenses/expenses-show/expenses-show.component';
+import { ExpensesEditComponent } from './expenses/expenses-edit/expenses-edit.component';
+import { ExpensesService } from './expenses/expenses.service'
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    HomeComponent
+    HomeComponent,
+    ExpensesComponent,
+    ExpensesIndexComponent,
+    ExpenseNewComponent,
+    ExpensesShowComponent,
+    ExpensesEditComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +42,7 @@ import { HomeComponent } from './home/home.component';
     ModalModule,
     FilterPipeModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, ExpensesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
