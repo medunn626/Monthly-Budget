@@ -40,6 +40,14 @@ export class ExpenseEditComponent implements OnInit {
     this.expensesService.removeMessage()
   }
 
+  _keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode)
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
   updateExpense(updatedExpense) {
     this.expensesService.updateExpense(updatedExpense)
     .subscribe(

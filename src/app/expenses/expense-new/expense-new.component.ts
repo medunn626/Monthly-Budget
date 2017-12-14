@@ -26,14 +26,12 @@ export class ExpenseNewComponent implements OnInit {
     this.expensesService.removeMessage()
   }
 
-  isNumberKey(evt) {
-    console.log('The keydown function got executed.')
-    // const charCode = (evt.which) ? evt.which : event.keyCode
-    // if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-    //   return false
-    // } else {
-    //   return true
-    // }
+  _keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode)
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
   }
 
   saveExpense(newExpense) {

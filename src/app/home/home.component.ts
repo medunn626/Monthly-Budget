@@ -12,9 +12,17 @@ export class HomeComponent implements OnInit {
     public router: Router
   ) { }
 
+  getDate() {
+    var today = new Date()
+    var dd = today.getDate()
+    console.log('The date is', dd)
+  }
+
   ngOnInit() {
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/'])
+    } else {
+      this.getDate()
     }
   }
 
