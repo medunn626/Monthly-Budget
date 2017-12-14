@@ -63,6 +63,24 @@ export class ExpensesService {
     return this.http.put(environment.apiServer + '/expenses/' + updatedExpense.expense.id, expenseUpdateParams, config);
   }
 
+  updatePaidStatus(updatedExpense) {
+    console.log('UpdatedExpense is', updatedExpense)
+    let config = {}
+    config['headers'] = { Authorization:'Token token=' + localStorage.getItem('token')}
+    let expenseUpdateParams = {
+      "expense": {
+        "description": updatedExpense.expense.description,
+        "amount": updatedExpense.expense.amount,
+        "payment_date": updatedExpense.expense.payment_date,
+        "recurring": updatedExpense.expense.recurring,
+        "paid": true,
+        "user_id": localStorage.getItem('id')
+      }
+    }
+    console.log('Params are', expenseUpdateParams)
+    return this.http.put(environment.apiServer + '/expenses/' + updatedExpense.expense.id, expenseUpdateParams, config);
+  }
+
   removeMessage() {
     this.deleteExpenseSuccess = false
     this.deleteExpenseFailure = false

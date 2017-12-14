@@ -21,7 +21,7 @@
         <div *ngIf="allExpenses.length > 0">
           <h4>You have {{allExpenses.length}} expense(s) this month.</h4>
         </div>
-        <div class="expenses">
+        <div class="expenses" id="expenses-table">
           <table *ngIf="allExpenses.length > 0">
             <tr>
               <th>Description</th>

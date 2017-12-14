@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class ExpenseIndexComponent implements OnInit {
 
   allExpenses = [];
+  updatedExpense = <any>{};
 
   constructor(
     public expensesService: ExpensesService,
@@ -36,6 +37,39 @@ export class ExpenseIndexComponent implements OnInit {
     this.expensesService.removeMessage()
   }
 
+  getDate() {
+    var today = new Date()
+    var dd = today.getDate()
+    console.log('The date is', dd)
+    return dd
+  }
+
+  checkPaidStatus(expenses) {
+    const date = this.getDate()
+    console.log('Expenses are', expenses)
+    for (let i = 0; i < expenses.length; i++) {
+      console.log('i is', i)
+      if (expenses[i].payment_date <= date) {
+        console.log('This should be maked as paid')
+        this.expensesService.getOneExpense(expenses[i].id)
+        .subscribe(response => {
+          this.updatedExpense = response.json();
+          console.log('Param is', this.updatedExpense)
+          this.expensesService.updatePaidStatus(this.updatedExpense)
+          .subscribe(
+            response => {
+              let data = response.json();
+              console.log('Update result is', data)
+            },
+            err => {
+              console.log('Error is', err)
+            }
+          )
+        });
+      }
+    }
+  }
+
   ngOnInit() {
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/'])
@@ -43,6 +77,7 @@ export class ExpenseIndexComponent implements OnInit {
       this.expensesService.getAllExpenses()
       .subscribe(response => {
         this.allExpenses = response.json()['expenses']
+        this.checkPaidStatus(this.allExpenses)
       });
     }
   }
