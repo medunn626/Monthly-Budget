@@ -70,6 +70,17 @@ export class ExpenseIndexComponent implements OnInit {
     }
   }
 
+  resetOnFirst(expenses) {
+    const date = this.getDate()
+    if (date == 1) {
+      for (let i = 0; i < expenses.length; i++) {
+        if (expenses[i].recurring != true) {
+          this.deleteExpense(expenses[i])
+        }
+      }
+    }
+  }
+
   ngOnInit() {
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/'])
@@ -78,6 +89,7 @@ export class ExpenseIndexComponent implements OnInit {
       .subscribe(response => {
         this.allExpenses = response.json()['expenses']
         this.checkPaidStatus(this.allExpenses)
+        this.resetOnFirst(this.allExpenses)
       });
     }
   }
