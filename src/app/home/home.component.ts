@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
   getBudget() {
     const budgetMessage = <HTMLInputElement>document.getElementById('budget-msg')
     const currentBudget = localStorage.getItem('currentBudget')
-    budgetMessage.innerText = 'Your current budget is: $' + currentBudget
+    budgetMessage.innerText = 'Current Budget: $' + currentBudget
   }
 
   getNextBill() {
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
     const date = this.getDate()
     const nextBill = localStorage.getItem('nextBill')
     const daysUntilNextBill = +nextBill - date
-    billMessage.innerText = 'Your next expense is in ' + daysUntilNextBill + ' day(s).'
+    billMessage.innerText = 'Next Expense: ' + daysUntilNextBill + ' day(s)'
   }
 
   ngOnInit() {

@@ -1,6 +1,13 @@
-<h2 id="welcome-msg"></h2>
+<div id="wrapper">
+<h1 id="welcome-msg"></h1>
 <!-- <h3 id="date-msg"></h3> -->
-<h3 id="budget-msg"></h3>
-<h3 id="bill-msg"></h3>
-<h5>Box to go to expenses</h5>
-<h5>Box to go to budget</h5>
+<div class="cn-container">
+  <nav>
+    <h3 id="budget-msg"></h3>
+    <a onclick="" routerLink="/budget">Budget</a>
+    <h3 id="bill-msg"></h3>
+    <a onclick="" routerLink="/expenses">Expenses</a>
+  </nav>
+</div>
+</div>
+<router-outlet></router-outlet>
