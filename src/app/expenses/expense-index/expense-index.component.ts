@@ -81,6 +81,16 @@ export class ExpenseIndexComponent implements OnInit {
     }
   }
 
+  getTotal(expenses) {
+    const totalDisplay = <HTMLInputElement>document.getElementById('total')
+    let sum = 0
+    for (let i = 0; i < expenses.length; i++) {
+      sum += expenses[i].amount
+    }
+    console.log('Sum is', sum)
+    totalDisplay.innerText = "Total Spending: $" + sum.toString()
+  }
+
   ngOnInit() {
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/'])
@@ -90,6 +100,7 @@ export class ExpenseIndexComponent implements OnInit {
         this.allExpenses = response.json()['expenses']
         this.checkPaidStatus(this.allExpenses)
         this.resetOnFirst(this.allExpenses)
+        this.getTotal(this.allExpenses)
       });
     }
   }

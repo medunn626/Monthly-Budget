@@ -15,10 +15,10 @@
           <h5>Sorry, this expense could not be deleted.</h5>
         </div>
         <h1>Expenses</h1>
-        <div *ngIf="allExpenses.length === 0">
+        <div *ngIf="allExpenses.length === 0" class="msg">
           <h4>You have no expenses yet. Either you're very lucky or you should add some.</h4>
         </div>
-        <div *ngIf="allExpenses.length > 0">
+        <div *ngIf="allExpenses.length > 0" class="msg">
           <h4>You have {{allExpenses.length}} expense(s) this month.</h4>
         </div>
         <div class="expenses" id="expenses-table">
@@ -38,6 +38,8 @@
               <td><a (click)="deleteExpense(expense)"><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
           </table>
+          <!-- <br> -->
+          <h4 class="msg" id="total"></h4>
           <br>
           <div id="new">
             <button routerLink="/expenses/new" class="btn btn-primary">Add An Expense</button>
