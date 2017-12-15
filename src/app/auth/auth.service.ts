@@ -37,6 +37,7 @@ export class AuthService {
       console.log('User is', user)
       localStorage.setItem('token', user.token)
       localStorage.setItem('id', user.id)
+      localStorage.setItem('user', user.email)
       this.loggedIn = true
       this.loginFailure = false
       this.signUpFailure = false

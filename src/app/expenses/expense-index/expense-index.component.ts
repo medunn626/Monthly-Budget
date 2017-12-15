@@ -93,6 +93,25 @@ export class ExpenseIndexComponent implements OnInit {
     totalDisplay.innerText = "Total Spending: $" + sum.toString()
   }
 
+  createUnpaidArray(expenses) {
+    const array = []
+    for (let i = 0; i < expenses.length; i++) {
+      if (expenses[i].paid == false) {
+        array.push(expenses[i].payment_date)
+        console.log('Array of unpaid bills is', array)
+        return array
+      }
+    }
+  }
+
+  getNextBill(expenses) {
+    const array = this.createUnpaidArray(expenses)
+    console.log('Array is', array)
+    const firstItem = array[0]
+    console.log('Next bill is due on', firstItem)
+    localStorage.setItem('nextBill', firstItem)
+  }
+
   ngOnInit() {
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/'])
@@ -103,6 +122,7 @@ export class ExpenseIndexComponent implements OnInit {
         this.checkPaidStatus(this.allExpenses)
         this.resetOnFirst(this.allExpenses)
         this.getTotal(this.allExpenses)
+        this.getNextBill(this.allExpenses)
       });
     }
   }

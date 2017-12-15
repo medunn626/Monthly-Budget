@@ -31,6 +31,7 @@ export class BudgetIndexComponent implements OnInit {
     const startingBudgetNum = +startingBudget
     const totalSpentNum = +totalSpent
     const budgetRemaining = startingBudgetNum - totalSpentNum
+    localStorage.setItem('currentBudget', budgetRemaining.toString())
     budgetRemainingDisplay.innerText = '$' + budgetRemaining.toString()
   }
 
