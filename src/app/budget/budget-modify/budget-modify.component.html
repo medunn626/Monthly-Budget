@@ -1,0 +1,21 @@
+<div id="container">
+  <!-- See Expenses Box -->
+  <div id="wrapper">
+    <!-- See Expenses Form -->
+    <div id="modify-budget">
+      <div id="back">
+        <a routerLink="/budget" class="back">Go Back</a>
+        <br>
+      </div>
+      <form (ngSubmit)="modifyBudget()" ngNativeValidate>
+        <h1>Budget</h1>
+        <label for="starting-budget">What is your starting budget for this month?</label><br>
+        <label>$</label>
+        <input name="starting-budget" id="starting-budget" size="10" maxlength="5" placeholder="e.g. 2000" (keypress)="_keyPress($event)" required/><br>
+        <p class="submit button">
+          <input type="submit" value="Submit"/>
+        </p>
+      </form>
+    </div><!--/ modify-budget-->
+  </div><!--/ wrapper-->
+</div><!--/ container-->

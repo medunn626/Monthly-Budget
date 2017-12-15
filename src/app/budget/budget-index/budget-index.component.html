@@ -1,0 +1,33 @@
+<div id="container">
+  <!-- See Expenses Box -->
+  <div id="wrapper">
+    <!-- See Expenses Form -->
+    <div id="see-budget">
+      <div id="back">
+        <a routerLink="/home" class="back">Go Back</a>
+        <br>
+      </div>
+      <form>
+        <h1>Budget</h1>
+        <table>
+          <tr>
+            <th>Starting Budget:</th>
+            <td id="budget-start">Text</td>
+          </tr>
+          <tr>
+            <th>Amount Spent This Month:</th>
+            <td id="total-spent"></td>
+          </tr>
+          <tr>
+            <th>Remaining Budget:</th>
+            <td id="budget-remaining">Text</td>
+          </tr>
+        </table>
+        <br>
+          <div id="modify">
+            <button routerLink="/budget/modify" class="btn btn-primary">Modify Starting Budget</button>
+          </div><!--/ new-->
+      </form>
+    </div><!--/ see-budget-->
+  </div><!--/ wrapper-->
+</div><!--/ container-->

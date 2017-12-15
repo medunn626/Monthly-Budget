@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-budget',
@@ -8,14 +7,9 @@ import { Router } from '@angular/router';
 })
 export class BudgetComponent implements OnInit {
 
-  constructor(
-    public router: Router
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    if (!localStorage.getItem('token')) {
-      this.router.navigate(['/'])
-    }
   }
 
 }

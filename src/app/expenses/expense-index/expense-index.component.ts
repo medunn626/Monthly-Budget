@@ -88,6 +88,8 @@ export class ExpenseIndexComponent implements OnInit {
       sum += expenses[i].amount
     }
     console.log('Sum is', sum)
+    localStorage.setItem('total', sum.toString())
+    console.log('Local total is', localStorage.getItem('total'))
     totalDisplay.innerText = "Total Spending: $" + sum.toString()
   }
 

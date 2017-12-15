@@ -10,7 +10,7 @@ const expenseRoutes: Routes = [
   {
     path: 'expenses',
     component: ExpensesComponent,
-    children: [ //create the sub sections (children) for this route
+    children: [
       {
         path: '',
         component: ExpenseIndexComponent

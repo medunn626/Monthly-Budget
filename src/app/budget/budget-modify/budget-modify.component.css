@@ -1,19 +1,9 @@
-.success {
+#back {
+  text-align: left;
+}
+
+#modify {
   text-align: center;
-  color: green;
-}
-
-.failure {
-  text-align: center;
-  color: green;
-}
-
-.glyphicon-edit {
-  color: #4e76f1;
-}
-
-.glyphicon-trash {
-  color: #ff165e;
 }
 
 table, th, td {
@@ -32,23 +22,6 @@ td {
   text-align: center;
 }
 
-.done {
-  opacity: 0.6;
-  font-style: italic;
-}
-
-#back {
-  text-align: left;
-}
-
-.msg {
-  text-align: center;
-}
-
-#new {
-  text-align: center;
-}
-
 a {
   font-size: 13px;
   color: #aaa;
@@ -61,7 +34,7 @@ a:hover {
   color: #555;
 }
 
-#see-expenses {
+#modify-budget {
   position: absolute;
 	width: 95%;
   max-width: 800px;
@@ -128,11 +101,11 @@ input {
 }
 
 #wrapper input:not([type="checkbox"]){
-	width: 92%;
+	/*width: 92%;*/
 	margin-top: 4px;
-	padding: 10px 5px 10px 32px;
+	padding: 10px 5px 10px;
 	border: 1px solid rgb(178, 178, 178);
-	box-sizing : content-box;
+	/*box-sizing : content-box;*/
 	border-radius: 3px;
 	box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
 	transition: all 0.2s linear;

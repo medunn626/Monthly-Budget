@@ -1,19 +1,9 @@
-.success {
+#back {
+  text-align: left;
+}
+
+#modify {
   text-align: center;
-  color: green;
-}
-
-.failure {
-  text-align: center;
-  color: green;
-}
-
-.glyphicon-edit {
-  color: #4e76f1;
-}
-
-.glyphicon-trash {
-  color: #ff165e;
 }
 
 table, th, td {
@@ -32,23 +22,6 @@ td {
   text-align: center;
 }
 
-.done {
-  opacity: 0.6;
-  font-style: italic;
-}
-
-#back {
-  text-align: left;
-}
-
-.msg {
-  text-align: center;
-}
-
-#new {
-  text-align: center;
-}
-
 a {
   font-size: 13px;
   color: #aaa;
@@ -61,7 +34,7 @@ a:hover {
   color: #555;
 }
 
-#see-expenses {
+#see-budget {
   position: absolute;
 	width: 95%;
   max-width: 800px;

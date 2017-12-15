@@ -22,7 +22,9 @@ import { ExpenseNewComponent } from './expenses/expense-new/expense-new.componen
 import { ExpenseEditComponent } from './expenses/expense-edit/expense-edit.component';
 import { ExpensesService } from './expenses/expenses.service';
 
-import { BudgetComponent } from './budget/budget.component'
+import { BudgetComponent } from './budget/budget.component';
+import { BudgetModifyComponent } from './budget/budget-modify/budget-modify.component';
+import { BudgetIndexComponent } from './budget/budget-index/budget-index.component'
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { BudgetComponent } from './budget/budget.component'
     ExpenseIndexComponent,
     ExpenseNewComponent,
     ExpenseEditComponent,
-    BudgetComponent
+    BudgetComponent,
+    BudgetModifyComponent,
+    BudgetIndexComponent
   ],
   imports: [
     BrowserModule,
