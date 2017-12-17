@@ -13,6 +13,6 @@ import { BudgetModifyComponent } from './budget-modify/budget-modify.component';
     RouterModule,
     FormsModule
   ],
-  declarations: [BudgetIndexComponent, BudgetModifyComponent]
+  declarations: [BudgetComponent, BudgetIndexComponent, BudgetModifyComponent]
 })
 export class BudgetModule { }

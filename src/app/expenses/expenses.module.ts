@@ -15,7 +15,7 @@ import { ExpensesService } from './expenses.service';
     RouterModule,
     FormsModule
   ],
-  declarations: [ExpenseIndexComponent, ExpensesComponent, ExpenseNewComponent, ExpenseEditComponent],
+  declarations: [ExpensesComponent, ExpenseIndexComponent, ExpenseNewComponent, ExpenseEditComponent],
   providers: [ExpensesService]
 })
 export class ExpensesModule { }

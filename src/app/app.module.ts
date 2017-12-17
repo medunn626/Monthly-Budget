@@ -16,28 +16,18 @@ import { AuthService } from './auth/auth.service';
 
 import { HomeComponent } from './home/home.component';
 
-import { ExpensesComponent } from './expenses/expenses.component';
-import { ExpenseIndexComponent } from './expenses/expense-index/expense-index.component';
-import { ExpenseNewComponent } from './expenses/expense-new/expense-new.component';
-import { ExpenseEditComponent } from './expenses/expense-edit/expense-edit.component';
 import { ExpensesService } from './expenses/expenses.service';
+import { ExpensesModule } from './expenses/expenses.module';
+import { ExpensesRoutingModule } from './expenses/expenses-routing.module';
 
-import { BudgetComponent } from './budget/budget.component';
-import { BudgetModifyComponent } from './budget/budget-modify/budget-modify.component';
-import { BudgetIndexComponent } from './budget/budget-index/budget-index.component'
+import { BudgetModule } from './budget/budget.module';
+import { BudgetRoutingModule } from './budget/budget-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    HomeComponent,
-    ExpensesComponent,
-    ExpenseIndexComponent,
-    ExpenseNewComponent,
-    ExpenseEditComponent,
-    BudgetComponent,
-    BudgetModifyComponent,
-    BudgetIndexComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +37,11 @@ import { BudgetIndexComponent } from './budget/budget-index/budget-index.compone
     AuthModule,
     AuthRoutingModule,
     ModalModule,
-    FilterPipeModule
+    FilterPipeModule,
+    ExpensesModule,
+    ExpensesRoutingModule,
+    BudgetModule,
+    BudgetRoutingModule
   ],
   providers: [AuthService, ExpensesService],
   bootstrap: [AppComponent]
