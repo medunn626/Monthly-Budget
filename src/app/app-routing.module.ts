@@ -6,6 +6,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 
 import { BudgetComponent } from './budget/budget.component';
+import { BudgetNewComponent } from './budget/budget-new/budget-new.component';
 import { BudgetIndexComponent } from './budget/budget-index/budget-index.component';
 import { BudgetModifyComponent } from './budget/budget-modify/budget-modify.component';
 
@@ -34,7 +35,11 @@ const routes: Routes = [
         component: BudgetIndexComponent
       },
       {
-        path: 'modify',
+        path: 'new',
+        component: BudgetNewComponent
+      },
+      {
+        path: 'modify/:id',
         component: BudgetModifyComponent
       }
     ]

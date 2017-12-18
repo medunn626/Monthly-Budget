@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BudgetComponent } from './budget.component';
 import { BudgetIndexComponent } from './budget-index/budget-index.component';
+import { BudgetNewComponent } from './budget-new/budget-new.component';
 import { BudgetModifyComponent } from './budget-modify/budget-modify.component';
 
 const budgetRoutes: Routes = [
@@ -16,7 +17,11 @@ const budgetRoutes: Routes = [
         component: BudgetIndexComponent
       },
       {
-        path: 'modify',
+        path: 'new',
+        component: BudgetNewComponent
+      },
+      {
+        path: 'modify/:id',
         component: BudgetModifyComponent
       }
     ]

@@ -1,7 +1,7 @@
 <div id="container">
-  <!-- See Expenses Box -->
+  <!-- See Budget Box -->
   <div id="wrapper">
-    <!-- See Expenses Form -->
+    <!-- See Budget Form -->
     <div id="see-budget">
       <div id="back">
         <a routerLink="/home" class="back">Go Back</a>
@@ -9,24 +9,32 @@
       </div>
       <form>
         <h1>Budget</h1>
+        <div  *ngIf="(allBudgets | json) === '{}'" class="no-budget">
+          <div id="new">
+            <h4>To get started, please add your starting budget</h4>
+            <button routerLink="/budget/new" class="btn btn-primary">Add Starting Budget</button>
+          </div><!--/ new-->
+        </div><!--/ no-budget-->
+        <div *ngIf="(allBudgets | json) != '{}'">
         <table>
           <tr>
             <th>Starting Budget:</th>
-            <td id="budget-start">Text</td>
+            <td id="budget-start">${{allBudgets.starting_budget}}</td>
           </tr>
           <tr>
             <th>Amount Spent This Month:</th>
-            <td id="total-spent"></td>
+            <td id="total-spent">${{allBudgets.amount_spent}}</td>
           </tr>
           <tr>
             <th>Remaining Budget:</th>
-            <td id="budget-remaining">Text</td>
+            <td id="budget-remaining">${{allBudgets.remaining_budget}}</td>
           </tr>
         </table>
         <br>
           <div id="modify">
-            <button routerLink="/budget/modify" class="btn btn-primary">Modify Starting Budget</button>
-          </div><!--/ new-->
+            <button routerLink="/budget/modify/{{allBudgets.id}}" class="btn btn-primary">Modify Starting Budget</button>
+          </div><!--/ modify-->
+        </div><!--/ has-budget-->
       </form>
     </div><!--/ see-budget-->
   </div><!--/ wrapper-->

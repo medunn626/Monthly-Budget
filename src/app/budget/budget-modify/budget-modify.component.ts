@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { BudgetService } from '../budget.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-budget-modify',
@@ -8,13 +9,26 @@ import { Router } from '@angular/router';
 })
 export class BudgetModifyComponent implements OnInit {
 
+  updatedBudget = <any>{};
+
   constructor(
-    public router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    public budgetService: BudgetService
   ) { }
 
   ngOnInit() {
+    const updatedStartingBudget = <HTMLInputElement>document.getElementById('updated-starting-budget')
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/'])
+    } else {
+      this.route.params.forEach( param => {
+        this.budgetService.getOneBudget(param.id)
+        .subscribe(response => {
+          this.updatedBudget = response.json();
+          updatedStartingBudget.value = this.updatedBudget.budget.starting_budget;
+        })
+      })
     }
   }
 
@@ -26,13 +40,26 @@ export class BudgetModifyComponent implements OnInit {
     }
   }
 
-  modifyBudget() {
-    const startingBudgetField = <HTMLInputElement>document.getElementById('starting-budget')
-    console.log('Element is', startingBudgetField)
-    const userEnteredField = startingBudgetField.value
-    console.log('User entered is', userEnteredField)
-    localStorage.setItem('startBudget', userEnteredField.toString())
-    this.router.navigate((["/budget"]));
+  // modifyBudget() {
+  //   const startingBudgetField = <HTMLInputElement>document.getElementById('starting-budget')
+  //   console.log('Element is', startingBudgetField)
+  //   const userEnteredField = startingBudgetField.value
+  //   console.log('User entered is', userEnteredField)
+  //   localStorage.setItem('startBudget', userEnteredField.toString())
+  //   this.router.navigate((["/budget"]));
+  // }
+
+  updateBudget(updatedBudget) {
+    this.budgetService.updateBudget(updatedBudget)
+    .subscribe(
+      response => {
+        let data = response.json();
+        this.router.navigate(["/budget"]);
+      },
+      err => {
+        this.budgetService.updateBudgetFailure = true
+      }
+    )
   }
 
 }

@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   getUser() {
     const welcomeMessage = <HTMLInputElement>document.getElementById('welcome-msg')
     const username = localStorage.getItem('user')
-    welcomeMessage.innerText = 'Welcome back, ' + username
+    welcomeMessage.innerText = 'Welcome, ' + username + '!'
   }
 
   getDate() {

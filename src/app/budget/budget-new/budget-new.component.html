@@ -1,20 +1,20 @@
 <div id="container">
-  <!-- Modify Budget Box -->
+  <!-- Add Budget Box -->
   <div id="wrapper">
-    <!-- Modify Budget Form -->
-    <div id="modify-budget">
+    <!-- Add Budget Form -->
+    <div id="add-budget">
       <div id="back">
-        <a routerLink="/budget" class="back">Go Back</a>
+        <a (click)="removeMessage()" routerLink="/budget" class="back">Go Back</a>
         <br>
       </div>
-      <form (ngSubmit)="updateBudget(updatedBudget)" ngNativeValidate>
-        <div *ngIf="budgetService.updateBudgetFailure" class="failure">
+      <form (ngSubmit)="saveBudget(newBudget)" ngNativeValidate>
+        <div *ngIf="budgetService.addBudgetFailure" class="failure">
           <h5>Sorry, your starting budget could not be added.</h5>
         </div>
         <h1>Budget</h1>
         <label for="starting_budget">What is your starting budget for this month?</label><br>
         <label>$</label>
-        <input name="starting_budget" id="updated-starting-budget" [(ngModel)]="updatedBudget.starting_budget"size="10" maxlength="5" placeholder="e.g. 2000" (keypress)="_keyPress($event)" required/><br>
+        <input name="starting_budget" id="starting-budget" [(ngModel)]="newBudget.starting_budget" size="10" maxlength="5" placeholder="e.g. 2000"  (keypress)="_keyPress($event)" required/><br>
         <p class="submit button">
           <input type="submit" value="Submit"/>
         </p>

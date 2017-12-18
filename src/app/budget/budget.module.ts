@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { BudgetComponent } from './budget.component';
 import { BudgetIndexComponent } from './budget-index/budget-index.component';
 import { BudgetModifyComponent } from './budget-modify/budget-modify.component';
+import { BudgetNewComponent } from './budget-new/budget-new.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { BudgetModifyComponent } from './budget-modify/budget-modify.component';
     RouterModule,
     FormsModule
   ],
-  declarations: [BudgetComponent, BudgetIndexComponent, BudgetModifyComponent]
+  declarations: [BudgetComponent, BudgetIndexComponent, BudgetModifyComponent, BudgetNewComponent]
 })
 export class BudgetModule { }

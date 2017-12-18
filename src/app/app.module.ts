@@ -22,6 +22,7 @@ import { ExpensesRoutingModule } from './expenses/expenses-routing.module';
 
 import { BudgetModule } from './budget/budget.module';
 import { BudgetRoutingModule } from './budget/budget-routing.module';
+import { BudgetService } from './budget/budget.service'
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { BudgetRoutingModule } from './budget/budget-routing.module';
     BudgetModule,
     BudgetRoutingModule
   ],
-  providers: [AuthService, ExpensesService],
+  providers: [AuthService, ExpensesService, BudgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
