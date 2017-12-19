@@ -74,7 +74,7 @@ export class ExpenseIndexComponent implements OnInit {
     console.log('Sum is', sum)
     localStorage.setItem('total', sum.toString())
     console.log('Local total is', localStorage.getItem('total'))
-    totalDisplay.innerText = "Total Spending: $" + sum.toString()
+    totalDisplay.innerText = "Total Spent: $" + sum.toString()
   }
 
   createUnpaidArray(expenses) {

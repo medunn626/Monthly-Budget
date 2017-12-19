@@ -8,32 +8,49 @@
 
 .no-budget {
   text-align: center;
+  font-family: 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
 }
 
-table, th, td {
-    border: 1px solid black;
-    font-size: 25px;
+#budget-table {
+	margin: auto;
+	text-align: center;
 }
 
-th, td {
-  padding: 5px;
+#budget-table .item {
+	font: 12px 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
+	text-shadow: 0 1px rgba(255,255,255,.8);
+	background: #fff;
+	border: 1px solid #ddd;
+	color: #333;
+	padding: 20px;
+	width: auto;
+	position: relative;
 }
 
-th {
-  text-align: left;
+#budget-table h3 {
+	font-size: 20px;
+	font-weight: normal;
+	padding: 20px;
+	margin: -20px -20px 50px -20px;
+	background-color: #eee;
+	background-image: -moz-linear-gradient(#fff,#eee);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
+	background-image: -webkit-linear-gradient(#fff, #eee);
+	background-image: -o-linear-gradient(#fff, #eee);
+	background-image: -ms-linear-gradient(#fff, #eee);
+	background-image: linear-gradient(#fff, #eee);
 }
 
-td {
-  text-align: center;
-  color: black;
+#budget-table ul {
+	margin: 20px 0 0 0;
+	padding: 0;
+	list-style: none;
+  font-size: 16px;
 }
 
-td#total-spent {
-  background-color: yellow;
-}
-
-td#budget-remaining {
-  background-color: green;
+#budget-table li {
+	border-top: 1px solid #ddd;
+	padding: 10px 0;
 }
 
 a {
