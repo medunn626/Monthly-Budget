@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BudgetService } from '../budget/budget.service';
+import { ExpensesService } from '../expenses/expenses.service'
 
 @Component({
   selector: 'app-home',
@@ -8,8 +10,13 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  allBudgets = {};
+  allExpenses = [];
+
   constructor(
-    public router: Router
+    public router: Router,
+    public budgetService: BudgetService,
+    public expensesService: ExpensesService
   ) { }
 
   getUser() {
@@ -18,36 +25,57 @@ export class HomeComponent implements OnInit {
     welcomeMessage.innerText = 'Welcome, ' + username + '!'
   }
 
+  getBudget() {
+    const budgetMessage = <HTMLInputElement>document.getElementById('budget-msg')
+    this.budgetService.getAllBudgets()
+    .subscribe(response => {
+      this.allBudgets = response.json()['budget']
+      console.log('Mike the BUDGET result is', this.allBudgets)
+      const currentBudget = this.allBudgets.remaining_budget
+      console.log('Mike the CURRENT BUDGET is', currentBudget)
+      budgetMessage.innerText = 'Current Budget = $' + currentBudget
+    })
+  }
+
   getDate() {
     const dateMessage = <HTMLInputElement>document.getElementById('date-msg')
     var today = new Date()
     var dd = today.getDate()
-    // var dd = 1
     console.log('The date is', dd)
-    // if (dd > 3) {
-    //   dateMessage.innerText = 'Today is the ' + dd + 'th'
-    // } else if (dd == 3) {
-    //   dateMessage.innerText = 'Today is the ' + dd + 'rd'
-    // } else if (dd == 2) {
-    //   dateMessage.innerText = 'Today is the ' + dd + 'nd'
-    // } else if (dd == 1) {
-    //   dateMessage.innerText = 'Today is the ' + dd + 'st'
-    // }
     return dd
   }
 
-  getBudget() {
-    const budgetMessage = <HTMLInputElement>document.getElementById('budget-msg')
-    const currentBudget = localStorage.getItem('currentBudget')
-    budgetMessage.innerText = 'Current Budget: $' + currentBudget
-  }
-
   getNextBill() {
+    // Grab the element to display the message
     const billMessage = <HTMLInputElement>document.getElementById('bill-msg')
+    // Get today's date
     const date = this.getDate()
-    const nextBill = localStorage.getItem('nextBill')
-    const daysUntilNextBill = +nextBill - date
-    billMessage.innerText = 'Next Expense: ' + daysUntilNextBill + ' day(s)'
+    // Get all expenses from service
+    this.expensesService.getAllExpenses()
+    .subscribe(response => {
+      this.allExpenses = response.json()['expenses']
+      console.log('Mike the EXPENSE result is', this.allExpenses)
+      // Put all expenses in an array
+      const expensesArray = this.allExpenses
+      let unpaidArray = []
+      let descriptionArray = []
+      // For each expense, if the paid status is false, add those payment dates to another array
+      for (let i = 0; i < expensesArray.length; i++) {
+        if (expensesArray[i].paid === false) {
+          unpaidArray.push(expensesArray[i].payment_date)
+          descriptionArray.push(expensesArray[i].description)
+        }
+        }
+        // Grab the first item in the array to get just then next day due
+        const nextDayDue = unpaidArray[0]
+        const description = descriptionArray[0]
+        // Subtract this item from the current date
+        const daysUntilNextBill = +nextDayDue - date
+        // Update message
+        if (expensesArray.length > 1) {
+          billMessage.innerText = description + ' due in ' + daysUntilNextBill + ' day(s)'
+      }
+    })
   }
 
   ngOnInit() {
@@ -55,7 +83,6 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/'])
     } else {
       this.getUser()
-      this.getDate()
       this.getBudget()
       this.getNextBill()
     }

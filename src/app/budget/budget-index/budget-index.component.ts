@@ -16,28 +16,16 @@ export class BudgetIndexComponent implements OnInit {
     public budgetService : BudgetService
   ) { }
 
-  // getStartingBudget() {
-  //   const startingBudgetDisplay = <HTMLInputElement>document.getElementById('budget-start')
-  //   const startingBudget = localStorage.getItem('startBudget')
-  //   startingBudgetDisplay.innerText = '$' + startingBudget
-  // }
-  //
-  // getTotalSpent() {
-  //   const totalSpentDisplay = <HTMLInputElement>document.getElementById('total-spent')
-  //   const totalSpent = localStorage.getItem('total')
-  //   totalSpentDisplay.innerText = '$' + totalSpent
-  // }
-  //
-  // getRemainingBudget() {
-  //   const budgetRemainingDisplay = <HTMLInputElement>document.getElementById('budget-remaining')
-  //   const startingBudget = localStorage.getItem('startBudget')
-  //   const totalSpent = localStorage.getItem('total')
-  //   const startingBudgetNum = +startingBudget
-  //   const totalSpentNum = +totalSpent
-  //   const budgetRemaining = startingBudgetNum - totalSpentNum
-  //   localStorage.setItem('currentBudget', budgetRemaining.toString())
-  //   budgetRemainingDisplay.innerText = '$' + budgetRemaining.toString()
-  // }
+  updateTotalSpent(budget) {
+    this.budgetService.updateTotalSpent(budget)
+    .subscribe(
+      response => {
+        let data = response.json();
+      },
+      err => {
+        console.log('Error is', err)
+      })
+    }
 
   ngOnInit() {
     if (!localStorage.getItem('token')) {
@@ -46,12 +34,9 @@ export class BudgetIndexComponent implements OnInit {
       this.budgetService.getAllBudgets()
       .subscribe(response => {
         this.allBudgets = response.json()['budget']
-        console.log('Response is', response)
-        console.log('Response array is', this.allBudgets)
+        console.log('Result is', this.allBudgets)
+        this.updateTotalSpent(this.allBudgets)
       })
-      // this.getStartingBudget()
-      // this.getTotalSpent()
-      // this.getRemainingBudget()
     }
   }
 

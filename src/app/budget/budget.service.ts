@@ -26,8 +26,8 @@ export class BudgetService {
     let budgetCreateParams = {
       "budget": {
         "starting_budget": newBudget.starting_budget,
-        "amount_spent": +localStorage.getItem('total-spent'),
-        "remaining_budget": newBudget.starting_budget - +localStorage.getItem('total-spent'),
+        "amount_spent": +localStorage.getItem('total'),
+        "remaining_budget": newBudget.starting_budget - +localStorage.getItem('total'),
         "user_id": localStorage.getItem('id')
       }
     }
@@ -41,13 +41,29 @@ export class BudgetService {
     let budgetUpdateParams = {
       "budget": {
         "starting_budget": updatedBudget.starting_budget,
-        "amount_spent": +localStorage.getItem('total-spent'),
-        "remaining_budget": updatedBudget.starting_budget - +localStorage.getItem('total-spent'),
+        "amount_spent": +localStorage.getItem('total'),
+        "remaining_budget": updatedBudget.starting_budget - +localStorage.getItem('total'),
         "user_id": localStorage.getItem('id')
       }
     }
     console.log('Params are', budgetUpdateParams)
     return this.http.put(environment.apiServer + '/budgets/' + updatedBudget.budget.id, budgetUpdateParams, config);
+  }
+
+  updateTotalSpent(updatedBudget) {
+    console.log('updatedBudget is', updatedBudget)
+    let config = {}
+    config['headers'] = { Authorization:'Token token=' + localStorage.getItem('token')}
+    let budgetUpdateParams = {
+      "budget": {
+        "starting_budget": updatedBudget.starting_budget,
+        "amount_spent": +localStorage.getItem('total'),
+        "remaining_budget": updatedBudget.starting_budget - +localStorage.getItem('total'),
+        "user_id": localStorage.getItem('id')
+      }
+    }
+    console.log('Params are', budgetUpdateParams)
+    return this.http.put(environment.apiServer + '/budgets/' + updatedBudget.id, budgetUpdateParams, config);
   }
 
   removeMessage() {

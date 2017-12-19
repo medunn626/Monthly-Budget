@@ -17,22 +17,6 @@ export class ExpenseIndexComponent implements OnInit {
     public router: Router
   ) { }
 
-  deleteExpense(deletedExpense) {
-    this.expensesService.deleteExpense(deletedExpense)
-    .subscribe(
-      response => {
-        let expenseIndex = this.allExpenses.indexOf(deletedExpense);
-        this.allExpenses.splice(expenseIndex, 1);
-        this.expensesService.deleteExpenseSuccess = true
-        this.expensesService.deleteExpenseFailure = false
-      },
-      err => {
-        this.expensesService.deleteExpenseSuccess = false
-        this.expensesService.deleteExpenseFailure = true
-      }
-    );
-  }
-
   removeMessage() {
     this.expensesService.removeMessage()
   }
@@ -125,6 +109,23 @@ export class ExpenseIndexComponent implements OnInit {
         this.getNextBill(this.allExpenses)
       });
     }
+  }
+
+  deleteExpense(deletedExpense) {
+    this.expensesService.deleteExpense(deletedExpense)
+    .subscribe(
+      response => {
+        let expenseIndex = this.allExpenses.indexOf(deletedExpense);
+        this.allExpenses.splice(expenseIndex, 1);
+        this.getTotal(this.allExpenses)
+        this.expensesService.deleteExpenseSuccess = true
+        this.expensesService.deleteExpenseFailure = false
+      },
+      err => {
+        this.expensesService.deleteExpenseSuccess = false
+        this.expensesService.deleteExpenseFailure = true
+      }
+    );
   }
 
 }

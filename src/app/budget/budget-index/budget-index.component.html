@@ -18,15 +18,15 @@
         <div *ngIf="(allBudgets | json) != '{}'">
         <table>
           <tr>
-            <th>Starting Budget:</th>
+            <th>Start of the Month:</th>
             <td id="budget-start">${{allBudgets.starting_budget}}</td>
           </tr>
           <tr>
-            <th>Amount Spent This Month:</th>
+            <th>Spent to Date:</th>
             <td id="total-spent">${{allBudgets.amount_spent}}</td>
           </tr>
           <tr>
-            <th>Remaining Budget:</th>
+            <th>Remaining:</th>
             <td id="budget-remaining">${{allBudgets.remaining_budget}}</td>
           </tr>
         </table>

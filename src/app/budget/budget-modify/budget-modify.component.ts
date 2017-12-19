@@ -40,15 +40,6 @@ export class BudgetModifyComponent implements OnInit {
     }
   }
 
-  // modifyBudget() {
-  //   const startingBudgetField = <HTMLInputElement>document.getElementById('starting-budget')
-  //   console.log('Element is', startingBudgetField)
-  //   const userEnteredField = startingBudgetField.value
-  //   console.log('User entered is', userEnteredField)
-  //   localStorage.setItem('startBudget', userEnteredField.toString())
-  //   this.router.navigate((["/budget"]));
-  // }
-
   updateBudget(updatedBudget) {
     this.budgetService.updateBudget(updatedBudget)
     .subscribe(

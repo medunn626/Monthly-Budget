@@ -12,6 +12,7 @@
 
 table, th, td {
     border: 1px solid black;
+    font-size: 25px;
 }
 
 th, td {
@@ -24,6 +25,15 @@ th {
 
 td {
   text-align: center;
+  color: black;
+}
+
+td#total-spent {
+  background-color: yellow;
+}
+
+td#budget-remaining {
+  background-color: green;
 }
 
 a {
