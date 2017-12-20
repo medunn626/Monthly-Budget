@@ -9,7 +9,7 @@ export class ExpensesService {
   deleteExpenseFailure: boolean;
   createExpenseFailure: boolean;
   updateExpenseFailure: boolean;
-  isPaid: boolean = false;
+  isPaid: boolean;
 
   getAllExpenses() {
     let config = {}
@@ -29,7 +29,28 @@ export class ExpensesService {
     return this.http.delete(environment.apiServer + '/expenses/' + expense.id, config)
   }
 
+  getDate() {
+    var today = new Date()
+    var dd = today.getDate()
+    console.log('The date is', dd)
+    return dd
+  }
+
+  setPaidStatus(date) {
+    const today = this.getDate()
+    console.log('Today is', today)
+    console.log('Date being passed in is', date)
+    if (date <= today) {
+      this.isPaid = true
+    } else if (date > today) {
+      this.isPaid = false
+    }
+    return this.isPaid
+  }
+
   saveExpense(newExpense) {
+    this.setPaidStatus(newExpense.payment_date)
+    console.log('Date param is', newExpense.payment_date)
     let config = {}
     config['headers'] = { Authorization:'Token token=' + localStorage.getItem('token')}
     let expenseCreateParams = {

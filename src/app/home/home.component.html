@@ -1,12 +1,20 @@
 <div id="wrapper">
-<h1 id="welcome-msg"></h1>
-<div class="cn-container">
-  <nav>
-    <h3 id="budget-msg"></h3>
-    <a routerLink="/budget">Budget</a>
-    <h3 id="bill-msg"></h3>
-    <a routerLink="/expenses">Expenses</a>
-  </nav>
-</div>
-</div>
+  <h1 id="welcome-msg"></h1>
+  <div id="home-table">
+    <div class="item">
+      <h3>
+        Your Dashboard
+      </h3>
+      <ul>
+        <li id="budget-msg">Go to Budget:</li>
+        <a routerLink="/budget">
+        <span class="glyphicon glyphicon glyphicon-usd"></span></a>
+        <li id="bill-msg">Go to Expenses:</li>
+        <a routerLink="/expenses">
+        <span class="glyphicon glyphicon glyphicon-barcode"></span></a>
+      </ul>
+    </div>
+    <br>
+  </div><!--home-table-->
+</div><!--wrapper-->
 <router-outlet></router-outlet>

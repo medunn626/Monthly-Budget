@@ -36,13 +36,14 @@ export class BudgetService {
   }
 
   updateBudget(updatedBudget) {
+    const updatedStartingBudget = <HTMLInputElement>document.getElementById('updated-starting-budget')
     let config = {}
     config['headers'] = { Authorization:'Token token=' + localStorage.getItem('token')}
     let budgetUpdateParams = {
       "budget": {
         "starting_budget": updatedBudget.starting_budget,
         "amount_spent": +localStorage.getItem('total'),
-        "remaining_budget": updatedBudget.starting_budget - +localStorage.getItem('total'),
+        "remaining_budget": +updatedStartingBudget.value - +localStorage.getItem('total'),
         "user_id": localStorage.getItem('id')
       }
     }

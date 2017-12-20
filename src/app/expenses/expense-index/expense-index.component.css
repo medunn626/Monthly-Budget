@@ -70,13 +70,12 @@ td {
 
 h4 {
   text-align: center;
-  font-weight: bold;
   font-family: 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
 }
 
 #total {
   font-size: 23px;
-  color: darkblue;
+  color: darkgreen;
 }
 
 #new {

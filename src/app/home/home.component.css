@@ -2,50 +2,56 @@ h2, h3 {
   text-align: center;
 }
 
-.cn-container{
-  top: 50%;
-  text-transform: uppercase;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.glyphicon {
+  color: darkblue;
+  font-size: 5.2em;
+}
+
+#home-table {
+	margin: auto;
+	text-align: center;
+}
+
+#home-table .item {
+	font: 12px 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
+	text-shadow: 0 1px rgba(255,255,255,.8);
+	background: #fff;
+	border: 1px solid #ddd;
+	color: #333;
+	padding: 20px;
+	width: auto;
+	position: relative;
+}
+
+#home-table h3 {
+	font-size: 20px;
+	font-weight: normal;
+	padding: 20px;
+	margin: -20px -20px 25px -20px;
+	background-color: #eee;
+	background-image: -moz-linear-gradient(#fff,#eee);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
+	background-image: -webkit-linear-gradient(#fff, #eee);
+	background-image: -o-linear-gradient(#fff, #eee);
+	background-image: -ms-linear-gradient(#fff, #eee);
+	background-image: linear-gradient(#fff, #eee);
+}
+
+#home-table ul {
+	margin: 20px 0 0 0;
+	padding: 0;
+	list-style: none;
+  font-size: 16px;
+}
+
+#home-table li {
+	border-top: 1px solid #ddd;
+	padding: 10px 0;
 }
 
 a {
   text-decoration: none;
   cursor: auto;
-}
-
-.cn-container nav a{
-	text-align: left;
-	font-family: 'Arial Narrow';
-	border: 8px solid #fff;
-	padding: 8%;
-	font-size: 40px;
-	letter-spacing: 7px;
-	color: rgba(0,0,0,0);
-	line-height: 100px;
-	outline: none;
-	/*margin: 0 0 10px 0;*/
-	box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-	background: #fff no-repeat center center;
-	background-size: 100%;
-	background-clip: padding-box;
-	transform: scale(0);
-}
-
-.cn-container nav a:hover {
-	box-shadow: 1px 2px 4px rgba(0,0,0,0.25);
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
-  color: rgba(255,255,255,1);
-  font-weight: bold;
-}
-
-.cn-container nav a[routerLink="/budget"]{
-	background-image: url("../../budget.jpg");
-}
-
-.cn-container nav a[routerLink="/expenses"]{
-	background-image: url("../../expenses.jpg");
 }
 
 #wrapper {

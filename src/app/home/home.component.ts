@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       console.log('Mike the BUDGET result is', this.allBudgets)
       const currentBudget = this.allBudgets.remaining_budget
       console.log('Mike the CURRENT BUDGET is', currentBudget)
-      budgetMessage.innerText = 'Current Budget = $' + currentBudget
+      budgetMessage.innerHTML = "Current Budget = <b>$" + currentBudget + "</b>"
     })
   }
 
@@ -72,8 +72,8 @@ export class HomeComponent implements OnInit {
         // Subtract this item from the current date
         const daysUntilNextBill = +nextDayDue - date
         // Update message
-        if (expensesArray.length > 1) {
-          billMessage.innerText = description + ' due in ' + daysUntilNextBill + ' day(s)'
+        if (expensesArray.length > 0) {
+          billMessage.innerHTML = description + " due in <b>" + daysUntilNextBill + " </b>day(s)"
       }
     })
   }
