@@ -25,15 +25,25 @@ export class HomeComponent implements OnInit {
     welcomeMessage.innerText = 'Welcome, ' + username + '!'
   }
 
-  getBudget() {
+  updateRemainingBudget(budget) {
     const budgetMessage = <HTMLInputElement>document.getElementById('budget-msg')
+    this.budgetService.updateTotalSpent(budget)
+    .subscribe(
+      response => {
+        let data = response.json();
+        const currentBudget = data.budget.remaining_budget
+        budgetMessage.innerHTML = "Current Budget = <b>$" + currentBudget + "</b>"
+      },
+      err => {
+        console.log('Error is', err)
+      })
+    }
+
+  getBudget() {
     this.budgetService.getAllBudgets()
     .subscribe(response => {
       this.allBudgets = response.json()['budget']
-      console.log('Mike the BUDGET result is', this.allBudgets)
-      const currentBudget = this.allBudgets.remaining_budget
-      console.log('Mike the CURRENT BUDGET is', currentBudget)
-      budgetMessage.innerHTML = "Current Budget = <b>$" + currentBudget + "</b>"
+      this.updateRemainingBudget(this.allBudgets)
     })
   }
 
@@ -41,7 +51,6 @@ export class HomeComponent implements OnInit {
     const dateMessage = <HTMLInputElement>document.getElementById('date-msg')
     var today = new Date()
     var dd = today.getDate()
-    console.log('The date is', dd)
     return dd
   }
 
@@ -54,7 +63,6 @@ export class HomeComponent implements OnInit {
     this.expensesService.getAllExpenses()
     .subscribe(response => {
       this.allExpenses = response.json()['expenses']
-      console.log('Mike the EXPENSE result is', this.allExpenses)
       // Put all expenses in an array
       const expensesArray = this.allExpenses
       let unpaidArray = []
@@ -72,8 +80,10 @@ export class HomeComponent implements OnInit {
         // Subtract this item from the current date
         const daysUntilNextBill = +nextDayDue - date
         // Update message
-        if (expensesArray.length > 0) {
+        if (unpaidArray.length > 0) {
           billMessage.innerHTML = description + " due in <b>" + daysUntilNextBill + " </b>day(s)"
+      } else {
+        billMessage.innerHTML = "Go to Expenses:"
       }
     })
   }

@@ -17,10 +17,14 @@ export class BudgetIndexComponent implements OnInit {
   ) { }
 
   updateTotalSpent(budget) {
+    const totalSpent = document.getElementsByTagName('li')
+    const current = document.getElementsByTagName('span')
     this.budgetService.updateTotalSpent(budget)
     .subscribe(
       response => {
         let data = response.json();
+        current[5].innerHTML = "$" + data.budget.remaining_budget
+        totalSpent[6].innerHTML = "<b>Amount Spent:</b> $" + data.budget.amount_spent
       },
       err => {
         console.log('Error is', err)
@@ -34,7 +38,6 @@ export class BudgetIndexComponent implements OnInit {
       this.budgetService.getAllBudgets()
       .subscribe(response => {
         this.allBudgets = response.json()['budget']
-        console.log('Result is', this.allBudgets)
         this.updateTotalSpent(this.allBudgets)
       })
     }

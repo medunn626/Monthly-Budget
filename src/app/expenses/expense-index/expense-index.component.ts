@@ -24,26 +24,20 @@ export class ExpenseIndexComponent implements OnInit {
   getDate() {
     var today = new Date()
     var dd = today.getDate()
-    console.log('The date is', dd)
     return dd
   }
 
   checkPaidStatus(expenses) {
     const date = this.getDate()
-    console.log('Expenses are', expenses)
     for (let i = 0; i < expenses.length; i++) {
-      console.log('i is', i)
       if (expenses[i].payment_date <= date) {
-        console.log('This should be maked as paid')
         this.expensesService.getOneExpense(expenses[i].id)
         .subscribe(response => {
           this.updatedExpense = response.json();
-          console.log('Param is', this.updatedExpense)
           this.expensesService.updatePaidStatus(this.updatedExpense)
           .subscribe(
             response => {
               let data = response.json();
-              console.log('Update result is', data)
             },
             err => {
               console.log('Error is', err)
@@ -71,9 +65,7 @@ export class ExpenseIndexComponent implements OnInit {
     for (let i = 0; i < expenses.length; i++) {
       sum += expenses[i].amount
     }
-    console.log('Sum is', sum)
     localStorage.setItem('total', sum.toString())
-    console.log('Local total is', localStorage.getItem('total'))
     totalDisplay.innerHTML = "Total Spent: <b>$" + sum.toString() + "</b>"
   }
 
@@ -82,7 +74,6 @@ export class ExpenseIndexComponent implements OnInit {
     for (let i = 0; i < expenses.length; i++) {
       if (expenses[i].paid == false) {
         array.push(expenses[i].payment_date)
-        console.log('Array of unpaid bills is', array)
         return array
       }
     }
@@ -90,9 +81,7 @@ export class ExpenseIndexComponent implements OnInit {
 
   getNextBill(expenses) {
     const array = this.createUnpaidArray(expenses)
-    console.log('Array is', array)
     const firstItem = array[0]
-    console.log('Next bill is due on', firstItem)
     localStorage.setItem('nextBill', firstItem)
   }
 

@@ -56,7 +56,6 @@ export class ExpenseEditComponent implements OnInit {
       response => {
         let data = response.json();
         this.router.navigate(["/expenses"]);
-        console.log('Update result is', data)
     },
     err => {
       this.expensesService.updateExpenseFailure = true

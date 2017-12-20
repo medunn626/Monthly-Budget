@@ -31,7 +31,6 @@ export class BudgetService {
         "user_id": localStorage.getItem('id')
       }
     }
-    console.log('Params are', budgetCreateParams)
     return this.http.post(environment.apiServer + '/budgets', budgetCreateParams, config);
   }
 
@@ -47,12 +46,10 @@ export class BudgetService {
         "user_id": localStorage.getItem('id')
       }
     }
-    console.log('Params are', budgetUpdateParams)
     return this.http.put(environment.apiServer + '/budgets/' + updatedBudget.budget.id, budgetUpdateParams, config);
   }
 
   updateTotalSpent(updatedBudget) {
-    console.log('updatedBudget is', updatedBudget)
     let config = {}
     config['headers'] = { Authorization:'Token token=' + localStorage.getItem('token')}
     let budgetUpdateParams = {
@@ -63,7 +60,6 @@ export class BudgetService {
         "user_id": localStorage.getItem('id')
       }
     }
-    console.log('Params are', budgetUpdateParams)
     return this.http.put(environment.apiServer + '/budgets/' + updatedBudget.id, budgetUpdateParams, config);
   }
 

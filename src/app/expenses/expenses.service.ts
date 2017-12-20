@@ -32,14 +32,11 @@ export class ExpensesService {
   getDate() {
     var today = new Date()
     var dd = today.getDate()
-    console.log('The date is', dd)
     return dd
   }
 
   setPaidStatus(date) {
     const today = this.getDate()
-    console.log('Today is', today)
-    console.log('Date being passed in is', date)
     if (date <= today) {
       this.isPaid = true
     } else if (date > today) {
@@ -50,7 +47,6 @@ export class ExpensesService {
 
   saveExpense(newExpense) {
     this.setPaidStatus(newExpense.payment_date)
-    console.log('Date param is', newExpense.payment_date)
     let config = {}
     config['headers'] = { Authorization:'Token token=' + localStorage.getItem('token')}
     let expenseCreateParams = {
@@ -63,7 +59,6 @@ export class ExpensesService {
         "user_id": localStorage.getItem('id')
       }
     }
-    console.log('Params are', expenseCreateParams)
     return this.http.post(environment.apiServer + '/expenses', expenseCreateParams, config);
   }
 
@@ -80,12 +75,10 @@ export class ExpensesService {
         "user_id": localStorage.getItem('id')
       }
     }
-    console.log('Params are', expenseUpdateParams)
     return this.http.put(environment.apiServer + '/expenses/' + updatedExpense.expense.id, expenseUpdateParams, config);
   }
 
   updatePaidStatus(updatedExpense) {
-    console.log('UpdatedExpense is', updatedExpense)
     let config = {}
     config['headers'] = { Authorization:'Token token=' + localStorage.getItem('token')}
     let expenseUpdateParams = {
@@ -98,7 +91,6 @@ export class ExpensesService {
         "user_id": localStorage.getItem('id')
       }
     }
-    console.log('Params are', expenseUpdateParams)
     return this.http.put(environment.apiServer + '/expenses/' + updatedExpense.expense.id, expenseUpdateParams, config);
   }
 

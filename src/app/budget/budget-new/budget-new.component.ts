@@ -41,7 +41,6 @@ export class BudgetNewComponent implements OnInit {
     response => {
       let data = response.json();
       this.router.navigate(["/budget"]);
-      console.log('Result is', data)
     },
     err => {
       this.budgetService.addBudgetFailure = true
