@@ -23,6 +23,7 @@ export class BudgetIndexComponent implements OnInit {
     .subscribe(
       response => {
         let data = response.json();
+        console.log('Result is', data)
         current[5].innerHTML = "$" + data.budget.remaining_budget
         totalSpent[6].innerHTML = "<b>Amount Spent:</b> $" + data.budget.amount_spent
       },
@@ -38,7 +39,10 @@ export class BudgetIndexComponent implements OnInit {
       this.budgetService.getAllBudgets()
       .subscribe(response => {
         this.allBudgets = response.json()['budget']
-        this.updateTotalSpent(this.allBudgets)
+        console.log('Response is', this.allBudgets)
+        if (+localStorage.getItem('total') > 0) {
+          this.updateTotalSpent(this.allBudgets)
+        }
       })
     }
   }

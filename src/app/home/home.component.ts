@@ -40,10 +40,15 @@ export class HomeComponent implements OnInit {
     }
 
   getBudget() {
+    const budgetMessage = <HTMLInputElement>document.getElementById('budget-msg')
     this.budgetService.getAllBudgets()
     .subscribe(response => {
       this.allBudgets = response.json()['budget']
-      this.updateRemainingBudget(this.allBudgets)
+      const currentBudget = this.allBudgets['remaining_budget']
+      budgetMessage.innerHTML = "Current Budget = <b>$" + currentBudget + "</b>"
+      if (+localStorage.getItem('total') > 0) {
+        this.updateRemainingBudget(this.allBudgets)
+      }
     })
   }
 
