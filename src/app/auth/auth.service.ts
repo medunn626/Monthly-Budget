@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 
 export class AuthService {
 
+  loggedIn: boolean;
   loginFailure: boolean;
   signUpFailure: boolean;
   signOutFailure: boolean;
@@ -19,6 +20,15 @@ export class AuthService {
     private http: Http,
     public router: Router
   ) { }
+
+  setStatus() {
+    const token = localStorage.getItem('token')
+    if (token == null) {
+      this.loggedIn = false
+    } else {
+      this.loggedIn = true
+    }
+  }
 
   login(email: string, password: string) {
     const emailField = <HTMLInputElement>document.getElementById('email-log')
@@ -38,6 +48,7 @@ export class AuthService {
       localStorage.setItem('user', user.email)
       this.loginFailure = false
       this.signUpFailure = false
+      this.setStatus()
       this.router.navigate(['/home/'])
     },
     err => {
@@ -90,8 +101,8 @@ signOut() {
   .subscribe(
     data => {
       localStorage.clear()
+      this.setStatus()
       this.signOutFailure = false
-      this.user = null
       this.router.navigate(['/'])
     },
     err => {

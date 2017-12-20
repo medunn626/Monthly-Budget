@@ -3,14 +3,14 @@
     <div class="navbar-header">
       <div class="navbar-brand"><span class="glyphicon glyphicon-piggy-bank"></span>Amaounda's Wallet
       </div>
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <button *ngIf="auth.loggedIn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Menu Options</span>
         <span class="icon-bar">&nbsp;</span>
         <span class="icon-bar">&nbsp;</span>
         <span class="icon-bar">&nbsp;</span>
       </button>
     </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div *ngIf="auth.loggedIn" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav pull-left">
         <li data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><a class="nav-link" routerLink="/home">Home</a></li>
         <li data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><a class="nav-link" routerLink="/budget">My Budget</a></li>
@@ -27,3 +27,6 @@
 <main>
   <router-outlet></router-outlet>
 </main>
+<div class="footer">
+  <p>&copy; <a href="https://github.com/medunn626" target="_blank">Mike Dunn's Developments</a></p>
+</div>
