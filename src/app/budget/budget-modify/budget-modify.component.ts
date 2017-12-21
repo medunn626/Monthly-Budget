@@ -33,7 +33,7 @@ export class BudgetModifyComponent implements OnInit {
   }
 
   _keyPress(event: any) {
-    const pattern = /[0-9\+\-\ ]/;
+    const pattern = /^\d*(\.\d{0,2})?$/;
     let inputChar = String.fromCharCode(event.charCode)
     if (!pattern.test(inputChar)) {
       event.preventDefault();

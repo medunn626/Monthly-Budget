@@ -14,7 +14,7 @@
         <h1>Budget</h1>
         <label for="starting_budget">What is your starting budget for this month?</label><br>
         <label>$</label>
-        <input name="starting_budget" id="starting-budget" [(ngModel)]="newBudget.starting_budget" size="10" maxlength="5" placeholder="e.g. 2000"  (keypress)="_keyPress($event)" required/><br>
+        <input name="starting_budget" id="starting-budget" [(ngModel)]="newBudget.starting_budget" size="10" maxlength="7" placeholder="e.g. 2000"  (keypress)="_keyPress($event)" required/><br>
         <p class="submit button">
           <input type="submit" value="Submit"/>
         </p>

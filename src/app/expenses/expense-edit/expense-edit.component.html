@@ -15,7 +15,7 @@
           <label for="description">Expense Description:</label>
           <input name="description" [(ngModel)]="updatedExpense.description" id="update-description" size="40" required/><br>
           <label for="amount">Amount: $</label>
-          <input name="amount" [(ngModel)]="updatedExpense.amount" ng-keydown="isNumberKey" id="update-amount" size="10" maxlength="5" (keypress)="_keyPress($event)" required/><br>
+          <input name="amount" [(ngModel)]="updatedExpense.amount" ng-keydown="isNumberKey" id="update-amount" size="10" maxlength="7" (keypress)="_keyPress($event)" required/><br>
           <label for="payment_date">Payment Date:</label>
           <input type="number" min="1" max="31" name="payment_date" [(ngModel)]="updatedExpense.payment_date" id="update-payment" maxlength="2" required/><br>
           <p class="recurring">

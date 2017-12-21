@@ -59,14 +59,22 @@ export class ExpenseIndexComponent implements OnInit {
     }
   }
 
-  getTotal(expenses) {
-    const totalDisplay = <HTMLInputElement>document.getElementById('total')
-    let sum = 0
+  getTotals(expenses) {
+    const totalNowDisplay = <HTMLInputElement>document.getElementById('total-now')
+    const totalAllDisplay = <HTMLInputElement>document.getElementById('total-all')
+    let sumNow = 0
+    let sumAll = 0
     for (let i = 0; i < expenses.length; i++) {
-      sum += expenses[i].amount
+      sumAll += +expenses[i].amount
+      if (expenses[i].paid == true) {
+        sumNow += +expenses[i].amount
+      }
     }
-    localStorage.setItem('total', sum.toString())
-    totalDisplay.innerHTML = "Total Spent: <b>$" + sum.toString() + "</b>"
+    const sumNowFixed = sumNow.toFixed(2)
+    const sumAllFixed = sumAll.toFixed(2)
+    localStorage.setItem('total', sumNow.toString())
+    totalNowDisplay.innerHTML = "Total Spent: <b>$" + sumNowFixed.toString() + "</b>"
+    totalAllDisplay.innerHTML = "Total Expenses: <b>$" + sumAllFixed.toString() + "</b>"
   }
 
   createUnpaidArray(expenses) {
@@ -94,7 +102,7 @@ export class ExpenseIndexComponent implements OnInit {
         this.allExpenses = response.json()['expenses']
         this.checkPaidStatus(this.allExpenses)
         this.resetOnFirst(this.allExpenses)
-        this.getTotal(this.allExpenses)
+        this.getTotals(this.allExpenses)
         this.getNextBill(this.allExpenses)
       });
     }
@@ -106,7 +114,7 @@ export class ExpenseIndexComponent implements OnInit {
       response => {
         let expenseIndex = this.allExpenses.indexOf(deletedExpense);
         this.allExpenses.splice(expenseIndex, 1);
-        this.getTotal(this.allExpenses)
+        this.getTotals(this.allExpenses)
         this.expensesService.deleteExpenseSuccess = true
         this.expensesService.deleteExpenseFailure = false
       },

@@ -19,6 +19,7 @@
 table {
   margin-left: auto;
   margin-right: auto;
+  table-layout: fixed;
 }
 
 table, th, td {
@@ -57,6 +58,8 @@ td {
   text-shadow: -1px, -1px, -1px rgba(0, 0, 0, 0.1);
   border-left: 1px solid #C1C3D1;
   border-right: 1px solid #C1C3D1;
+  word-wrap: break-word;
+  max-width: 110px;
 }
 
 .done {
@@ -73,7 +76,7 @@ h4 {
   font-family: 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
 }
 
-#total {
+#total-now {
   font-size: 23px;
   color: darkgreen;
 }

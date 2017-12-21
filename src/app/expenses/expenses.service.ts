@@ -63,6 +63,7 @@ export class ExpensesService {
   }
 
   updateExpense(updatedExpense) {
+    this.setPaidStatus(updatedExpense.payment_date)
     let config = {}
     config['headers'] = { Authorization:'Token token=' + localStorage.getItem('token')}
     let expenseUpdateParams = {

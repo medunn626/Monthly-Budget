@@ -15,7 +15,7 @@
           <label for="description">Expense Description:</label>
           <input name="description" [(ngModel)]="newExpense.description" id="new-description" placeholder="e.g. 'groceries, Hulu, etc." size="40" required/><br>
           <label for="amount">Amount: $</label>
-          <input name="amount" [(ngModel)]="newExpense.amount" id="new-amount" size="10" maxlength="5" placeholder="e.g. 100" (keypress)="_keyPress($event)" required/><br>
+          <input name="amount" [(ngModel)]="newExpense.amount" id="new-amount" size="10" maxlength="7" placeholder="e.g. 100" (keypress)="_keyPress($event)" required/><br>
           <label for="payment_date">Payment Date:</label>
           <input type="number" min="1" max="31" name="payment_date" [(ngModel)]="newExpense.payment_date" id="new-payment" maxlength="2" placeholder="DD" required/><br>
           <p class="recurring">

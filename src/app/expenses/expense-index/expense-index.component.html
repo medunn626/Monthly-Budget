@@ -28,7 +28,7 @@
               <th>Date</th>
               <th>Amount</th>
               <th>Edit</th>
-              <th>Delete</th>
+              <th>X</th>
             </tr>
             <tr *ngFor="let expense of allExpenses">
               <td [ngClass]="{'done': expense.paid }">{{expense.description}}</td>
@@ -39,7 +39,8 @@
             </tr>
           </table>
           <!-- <br> -->
-          <h4 class="msg" id="total"></h4>
+          <h4 class="msg" id="total-now"></h4>
+          <h4 class="msg" id="total-all"></h4>
           <br>
           <div id="new">
             <button routerLink="/expenses/new" class="btn btn-primary">Add An Expense</button>
